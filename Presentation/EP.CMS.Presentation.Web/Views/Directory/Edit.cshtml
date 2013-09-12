@@ -1,0 +1,34 @@
+﻿@model EP.CMS.Domain.DirectoryModule.Entities.Directory
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_CMSLayout.cshtml";
+}
+
+<div id="toolbar-box">
+    <div class="m">
+        <div class="toolbar-list" id="toolbar">
+            <ul>
+                 @Html.Toolbar("Apply")
+                @Html.Toolbar("Save")
+                @Html.Toolbar("SaveNew")
+                <li class="divider"></li>
+                @Html.Toolbar("Cancel")
+
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="pagetitle icon-48-article">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    </div>
+</div>
+<div id="submenu-box">
+    <div class="m">
+        
+        <div class="clr"></div>
+    </div>
+</div>
+<div id="system-message-container">
+</div>
+<div id="english-edit">@Html.Partial("_EditForm", Model)</div>

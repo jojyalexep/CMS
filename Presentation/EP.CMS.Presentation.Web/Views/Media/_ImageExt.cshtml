@@ -1,0 +1,50 @@
+﻿@model EP.CMS.Domain.ContentModule.Entities.ImageContent
+
+@{
+    Layout = null;
+}
+<fieldset class="adminform">
+    <legend>Image</legend>
+
+    <ul class="image-part">
+        <li>
+            <div class="banner-image">
+                <br />
+                <br />
+                <label title="">Image<span class="star">&nbsp;*</span></label>
+                <img class="imgclass img-holder"  src="@Url.Content("~/" + Model.ThumbnailUrl)" alt="" />
+                <input type="hidden" class="img-id required"  name="ImageId" value="@(Model.Id == 0 ? "" : Model.Id.ToString())" />
+            </div>
+        </li>
+        <li>
+            <div>
+                <label title="">Image Display Name<span class="star">&nbsp;*</span></label>
+                <label style="clear: none;" class="img-name" title="">@Model.DisplayName</label>
+            </div>
+            <br />
+            <br />
+        </li>
+        <li>
+            <div class="">
+                <label title="">Action</label>
+                <input type="hidden" id="hdnMediaController" value="@Url.Content("~/Media/")" />
+                <button onclick="return SelectNewImage(this, NewsImageUpload)" class="btn btn-small btn-success">
+                    <i class="icon-new icon-white"></i>
+                    New
+                </button>
+                <button onclick="return SelectGalleryImage(this, NewsImageUpload);" class="btn btn-small">
+                    <span class="icon-options"></span>
+                    Select 
+                </button>
+
+            </div>
+
+        </li>
+        <li>
+            <div class="new-image">
+            </div>
+
+        </li>
+    </ul>
+
+</fieldset>

@@ -1,0 +1,52 @@
+﻿@model EP.CMS.Domain.PageModule.Entities.Info
+@{
+    Layout = null;
+    int id = (Model.LanguageId == (int)EP.CMS.Domain.CommonModule.Enum.Language.English) ? Model.Id : Model.LinkedId;
+    var subAction = id == 0 ? "add" : "edit";
+    string action = ((string)ViewBag.Action == "Static" ? "menu_static_" : "menu_article_") + subAction;
+}
+
+<ul>
+    <li>
+        <h4>Article</h4>
+    </li>
+    <li>
+        <div class="holder">
+            <div>
+                @if (Model.Id == 0)
+                {
+                    <img src="~/Content/images/icons/article-blank.png" />
+                }
+                else
+                {
+                    <img src="~/Content/images/icons/article-exist.png" />
+                }
+            </div>
+
+        </div>
+    </li>
+    <li>
+        <div class="clr"></div>
+        <div>
+            <div>
+                <label class="img-name" title="">@Model.Title</label>
+            </div>
+            <div class="float:right">
+                <button onclick="return ChangeInfoFromMenu('@id','@action');" class="">
+                    <img src="~/Content/images/icons/pencil.png" />
+                </button>
+            </div>
+
+        </div>
+    </li>
+    <li>
+        <div class="">
+        </div>
+
+    </li>
+    <li>
+        <div class="new-image">
+        </div>
+
+    </li>
+</ul>

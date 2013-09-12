@@ -1,0 +1,18 @@
+﻿@{
+    string language = ViewBag.Language == EP.CMS.Domain.CommonModule.Enum.Language.Arabic ? "ar" : "en";
+}
+
+<ul id="langbar">
+    <li>
+        <a class="lang-en" id="" onclick="EP.languageChange('en', 'true')" href="#">English</a>
+        <input type="hidden" id="hdnLanguage" value="@language" />
+    </li>
+    <li>
+        <a class="lang-ar" onclick="EP.languageChange('ar', 'true')">Arabic</a>	</li>
+</ul>
+<script>
+    $(function (e) {
+        EP.languageChange('@language', false);
+    });
+
+</script>

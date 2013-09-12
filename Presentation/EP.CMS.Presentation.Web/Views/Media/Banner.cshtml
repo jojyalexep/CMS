@@ -1,0 +1,77 @@
+﻿@model IEnumerable<EP.CMS.Domain.ContentModule.Entities.ImageContent>
+@{
+    Layout = "~/Views/Shared/_CMSLayout.cshtml";
+    ViewBag.Title = "Media Manager";
+}
+@section HeaderSection {
+    <link href="~/Scripts/simple_paginate/simplePagination.css" rel="stylesheet" />
+    <script src="~/Scripts/simple_paginate/jquery.simplePagination.js"></script>
+    <script>
+        //CLICK ON A DIRECTORY TO LOAD ITS CONTENT
+        $(document).ready(function (e) {
+            var dir = '@ViewBag.Directory';
+            $("#" + dir).click();
+        });
+    </script>
+
+}
+
+<div id="toolbar-box">
+    <div class="m">
+        <div class="toolbar-list" id="toolbar">
+            <ul>
+                @Ajax.Toolbar("New", new AjaxOptions { UpdateTargetId = "add-media", OnSuccess = "AddMedia('Banner')" })
+                @Html.Toolbar("Edit", "Edit", "MediaEdit()")
+                <li class="divider"></li>
+                @Html.Toolbar("Publish")
+                @Html.Toolbar("Unpublish")
+                <li class="divider"></li>
+                @Html.Toolbar("Trash")
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="pagetitle icon-48-article">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    </div>
+</div>
+<div id="submenu-box">
+    <div class="m">
+        <ul id="submenu">
+
+            <li><a class="" href="@Url.Content("~/Media/")">All Media</a>	</li>
+            <li><a class="active" href="@Url.Content("~/Media/Banner")">Banner</a></li>
+
+        </ul>
+        @Html.Partial("_LanguageBar")
+        <div class="clr"></div>
+    </div>
+</div>
+<div id="system-message-container">
+</div>
+<div id="element-box">
+    <div class="m">
+        <div class="width-20 fltlft">
+            <fieldset class="adminform">
+                <legend>Directory</legend>
+                <div id="directory">
+                    <ul class="nav nav-list collapse in">
+                        <li>&nbsp; <a id="home" onclick="GetBanner(this,'home');">Home</a></li>
+                        <li>&nbsp; <a id="faq" onclick="GetBanner(this,'faq');">FAQ</a></li>
+                        <li>&nbsp; <a id="tac" onclick="GetBanner(this,'tac');">T & C</a></li>
+                        <li>&nbsp; <a id="search" onclick="GetBanner(this,'search');">Search</a></li>
+                    </ul>
+
+                </div>
+            </fieldset>
+            <div class="clr"></div>
+        </div>
+        <div class="width-80 fltrt">
+            <div id="add-media"></div>
+            <div id="dir-content">
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>

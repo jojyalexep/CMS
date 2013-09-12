@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EP.CMS.Domain.ContentModule.Entities.Content>
+@{
+    Layout = "~/Views/Shared/_CMSLayout.cshtml";
+    ViewBag.Title = "Media Manager";
+}
+@section HeaderSection {
+
+    <script>
+        //CLICK ON A DIRECTORY TO LOAD ITS CONTENT
+        $(document).ready(function (e) {
+            var dir = '@ViewBag.Directory';
+            $("#" + dir).click();
+
+        });
+    </script>
+    <link href="~/Scripts/simple_paginate/simplePagination.css" rel="stylesheet" />
+    <script src="~/Scripts/simple_paginate/jquery.simplePagination.js"></script>
+    <script>
+        EP.paginate();
+    </script>
+
+}
+
+<div id="toolbar-box">
+    <div class="m">
+        <div class="toolbar-list" id="toolbar">
+            <ul>
+                @Ajax.Toolbar("New", new AjaxOptions { UpdateTargetId = "add-media", OnSuccess = "AddMedia('All')" })
+                @*@Html.Toolbar("Edit", "Edit", "MediaEdit()")*@
+                <li class="divider"></li>
+@*                @Html.Toolbar("Publish")
+                @Html.Toolbar("Unpublish")
+                <li class="divider"></li>*@
+                @Html.Toolbar("Trash")
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="pagetitle icon-48-mediamanager">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    </div>
+</div>
+<div id="submenu-box">
+    <div class="m">
+        <ul id="submenu">
+            
+            <li><a class="active" href="@Url.Content("~/Media/")">All Media</a>	</li>
+            @*<li><a class="" href="@Url.Content("~/Media/Banner")">Banner</a></li>*@
+
+        </ul>
+        <div class="clr"></div>
+    </div>
+</div>
+<div id="system-message-container">
+</div>
+<div id="element-box">
+    <div class="m">
+        <div class="width-20 fltlft">
+            <div id="directory">@Html.Action("Tree", "Directory") </div>
+            <div class="clr"></div>
+        </div>
+        <div class="width-80 fltrt">
+            <div id="add-media"></div>
+            <div id="dir-content">@Html.Partial("_Content", Model)  </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>

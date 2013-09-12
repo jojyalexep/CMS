@@ -1,0 +1,14 @@
+﻿@model IEnumerable<EP.CMS.Domain.MenuModule.Entities.Menu>
+@{
+    Layout = null;
+}
+<h4>Drag the menus to reorder it:</h4>
+<ul id="menuList">
+    @foreach (var item in Model)
+    {
+        <li id="@item.Id">
+            @item.DisplayName
+        </li>
+    }
+
+</ul>

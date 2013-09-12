@@ -1,0 +1,48 @@
+﻿@model EP.CMS.Domain.DirectoryModule.Entities.Directory
+@{
+    Layout = null;
+}
+<fieldset class="adminform">
+    <legend>Directory</legend>
+    <div class="dir-action">
+         <input type="hidden" id="hdnDirController" value="@Url.Content("~/Directory/")" />
+        <div>
+            <button onclick="return  DirectoryAction('new')" class="btn btn-small btn-success">
+                <i class="icon-new icon-white"></i>
+                New
+            </button>
+            <button onclick="return DirectoryAction('rename')" class="btn btn-small">
+                <span class="icon-options"></span>
+                Rename
+            </button>
+            <button onclick="return DirectoryAction('delete')" class="btn btn-small btn-danger">
+                <span class="icon-options"></span>
+                Delete
+            </button>
+        </div>
+        <div class="clr"></div>
+        <div style="padding-top: 30px; display: none" id="divDirSave">
+            <label id="title-lbl" class="hasTip required" title="" style="min-width: 30px;">Name<span class="star">&nbsp;*</span></label>
+            <input type="text" name="name" id="txtDirName" style="margin-top: 10px" />
+            <button id="btnSaveDir" class="btn btn-small">
+                <span class="icon-options"></span>
+                Save
+            </button>
+        </div>
+    </div>
+    <div class="clr"></div>
+    <br>
+    <ul class="nav nav-list collapse in">
+        <li class="active">&nbsp; @Ajax.ActionLink(Model.Name, "GetDirectoryContent", "Media", new { directoryId = Model.Id }, 
+        new AjaxOptions { UpdateTargetId = "dir-content", OnBegin = "DirectorySelected('" + Model.Name + "');" }, 
+        new { id = Model.Name })
+            @if (Model.ChildDirectory.Count > 0)
+            {
+                Html.RenderPartial("ChildDirectory", Model.ChildDirectory.OrderBy(p=>p.Id));
+            }
+        </li>
+
+    </ul>
+
+
+</fieldset>

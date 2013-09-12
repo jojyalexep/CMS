@@ -1,0 +1,135 @@
+﻿@model EP.CMS.Domain.MenuModule.Entities.Menu
+
+@{
+    ViewBag.Title = "Menu Manager";
+    Layout = "~/Views/Shared/_CMSLayout.cshtml";
+    
+}
+
+
+@section HeaderSection{
+    @Styles.Render("~/Content/themes/base/css")
+    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <script>
+        $(document).ready(function (e) {
+            $("#menu-tree .menu-edit").click(function (e) {
+                e.preventDefault();
+                PageLoader(true);
+                $("#menu-tree .menu-edit").removeClass("checked");
+                $(this).addClass("checked");
+                $("#menu-content").html("");
+                $("#menu-content").load($(this).attr('href'),function(e){
+                    EP.languageChange('en');
+                    PageLoader(false);
+                });
+            });
+
+            $("#menu-tree #menu" + "@ViewBag.MenuId").click();
+        });
+    </script>
+}
+
+<div id="toolbar-box">
+    <div class="m">
+        <div class="toolbar-list" id="toolbar">
+            <ul>
+                @Html.Toolbar("ViewSite", "View Site")
+                @* <li class="divider"></li>
+                @Html.Toolbar("MenuReorder", "Re-order")
+                <li class="divider"></li>
+                @Html.Toolbar("New", "New", "MenuNew()")
+                @Html.Toolbar("Edit", "Edit", "MenuEdit()")
+                <li class="divider"></li>
+                @Html.Toolbar("Publish")
+                @Html.Toolbar("Unpublish")
+                <li class="divider"></li>
+                @Html.Toolbar("Trash")*@
+            </ul>
+            <div>
+                <input type="hidden" id="hdnFrontEndUrl" value="@EP.CMS.Presentation.Web.Utilities.LinkManager.ViewFrontEndHome(EP.CMS.Domain.CommonModule.Enum.Language.Arabic)" />
+            </div>
+            <div class="clr"></div>
+
+        </div>
+        <div class="pagetitle icon-48-article">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    </div>
+</div>
+<div id="submenu-box">
+    <div class="m">
+        <ul id="submenu">
+            <li>
+            <li><a class="" href="@Url.Content("~/Menu/")">Top Menu</a></li>
+            <li><a class="active" href="@Url.Content("~/Menu/Static")">Static</a></li>
+        </ul>
+        @Html.Partial("_LanguageBar")
+        <div class="clr"></div>
+    </div>
+</div>
+<div id="system-message-container">
+</div>
+<div id="element-box">
+    <div class="m">
+        <div class="width-30 fltlft">
+
+            <div id="menu-tree">
+                <fieldset>
+                    <ul class="nav nav-list collapse in">
+                        <li>
+                            <div class='crumb gi'>&nbsp;</div>
+                            <div class="menu-text">
+                                <a href="~/Menu/StaticContent?page=Home" id="menuHome" class = "menu-edit">Home</a>
+                            </div>
+                            <div class="clr"></div>
+                        </li>
+                         <li>
+                            <div class='crumb gi'>&nbsp;</div>
+                            <div class="menu-text">
+                                <a href="~/Menu/StaticContent?page=FAQ" id="menuFAQ" class = "menu-edit">FAQ</a>
+                            </div>
+                             <div class="clr"></div>
+                        </li>
+                         <li>
+                            <div class='crumb gi'>&nbsp;</div>
+                            <div class="menu-text">
+                                <a href="~/Menu/StaticContent?page=TAC" id="menuTAC" class = "menu-edit">Terms & Conditions</a>
+                            </div>
+                             <div class="clr"></div>
+                        </li>
+                        <li>
+                            <div class='crumb gi'>&nbsp;</div>
+                            <div class="menu-text">
+                                <a href="~/Menu/StaticContent?page=Disclaimer" id="menuDisclaimer" class = "menu-edit">Disclaimer</a>
+                            </div>
+                             <div class="clr"></div>
+                        </li>
+                        <li>
+                            <div class='crumb gi'>&nbsp;</div>
+                            <div class="menu-text">
+                                <a href="~/Menu/StaticContent?page=Privacy" id="menuPrivacy" class = "menu-edit">Privacy Policy</a>
+                            </div>
+                             <div class="clr"></div>
+                        </li>
+                         <li>
+                            <div class='crumb gi'>&nbsp;</div>
+                            <div class="menu-text">
+                                <a href="~/Menu/StaticContent?page=Search" id="menuSearch" class = "menu-edit">Search</a>
+                            </div>
+                             <div class="clr"></div>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+
+            <div class="clr"></div>
+
+        </div>
+        <div class="width-70 fltrt">
+            <div id="menu-content"></div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="clr"></div>
+    </div>
+</div>

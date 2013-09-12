@@ -1,0 +1,22 @@
+﻿@model IEnumerable<EP.CMS.Domain.ContentModule.Entities.ImageContent>
+@{
+    Layout = null;
+}
+<link href="~/Scripts/simple_paginate/simplePagination.css" rel="stylesheet" />
+<script src="~/Scripts/simple_paginate/jquery.simplePagination.js"></script>
+
+<div id="system-message-container">
+</div>
+<div id="element-box">
+    <div class="m">
+        <div class="width-30 fltlft">
+            <div id="directory">@Html.Action("Tree", "Directory") </div>
+            <div class="clr"></div>
+        </div>
+        <div class="width-70 fltrt">
+            <div id="dir-content">@Html.Partial("_Content", Model)  </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>

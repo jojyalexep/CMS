@@ -1,0 +1,17 @@
+﻿@model IEnumerable<EP.CMS.Domain.DirectoryModule.Entities.Directory>
+<ul class="nav nav-list collapse in">
+    @foreach (var dir in Model)
+    {
+        if (!dir.IsDeleted)
+        {
+    
+        <li>&nbsp; @Ajax.ActionLink(dir.Name, "GetDirectoryContent", "Media", new { directoryId = dir.Id }, new AjaxOptions { UpdateTargetId = "dir-content", OnBegin = "DirectorySelected('" + dir.Name + "');", OnSuccess="DirectorySelectionCompleted" }, new { id = dir.Name })
+        </li>
+            if (dir.ChildDirectory != null && dir.ChildDirectory.Count > 0)
+            {
+                Html.RenderPartial("ChildDirectory", dir.ChildDirectory);
+            }
+        }
+    }
+</ul>
+

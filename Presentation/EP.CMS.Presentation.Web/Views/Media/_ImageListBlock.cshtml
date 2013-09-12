@@ -1,0 +1,14 @@
+﻿@model EP.CMS.Domain.ContentModule.Entities.ImageContent
+<li class="data-row">
+    <div class="div-image">
+        <a class="modal" rel="boxed" href="@Url.Content("~/" + Model.Url)">
+            <img src="@Url.Content("~/" + Model.ThumbnailUrl)" alt="@Model.DisplayName" class="imgclass" height="77" width="130" />
+        </a>
+    </div>
+    <div class="div-action">
+        <input type="checkbox" class="cbox-form" value="@Model.Id" title="Checkbox for image">
+    </div>
+    <div class="div-title">
+        <b class="img-name">@Model.DisplayName</b>
+    </div>
+</li>

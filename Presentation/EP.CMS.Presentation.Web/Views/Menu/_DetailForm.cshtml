@@ -1,0 +1,14 @@
+﻿@model EP.CMS.Domain.PageModule.Entities.Info
+@{
+    int id = Model.IsLinked() ? Model.LinkedId : Model.Id;
+}
+<fieldset class="adminform">
+    <div style="width: 230px;" class="fltlft">
+        @Html.Partial("~/Views/Info/_MenuView.cshtml", Model)
+    </div>
+    <div style="width: 230px;" class="fltlft">
+        @Html.Partial("~/Views/Media/_MenuView.cshtml", Model.Banner)
+    </div>
+    <input type="hidden" class="hdnInfoId" value="@Model.Id" />
+    <input type="hidden" class="frontend_url" value="@EP.CMS.Presentation.Web.Utilities.LinkManager.ViewFrontEndInfo(Model)" />
+</fieldset>

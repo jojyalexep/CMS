@@ -1,0 +1,68 @@
+﻿@model EP.CMS.Domain.PageModule.Entities.Info
+
+@{
+    Layout = "~/Views/Shared/_CMSLayout.cshtml";
+}
+
+@section HeaderSection{
+    @Styles.Render("~/Content/themes/base/css")
+    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    @*<script src="~/Scripts/tiny_mce/tiny_mce.js"></script>*@
+    <script src="~/Scripts/tinymce_v4/tinymce.min.js"></script>
+
+}
+
+
+<div id="toolbar-box">
+    <div class="m">
+        <div class="toolbar-list" id="toolbar">
+            <ul>
+
+                @Html.Toolbar("ViewSite", "View Site")
+                <li class="divider"></li>
+                @*              @if (String.IsNullOrEmpty(Request.QueryString["workflow"]))
+                {
+                    @Html.Toolbar("Apply")
+                }*@
+                @Html.Toolbar("Save")
+                @if (String.IsNullOrEmpty(Request.QueryString["workflow"]))
+                {
+                    @Html.Toolbar("save-new", "Save New")
+                }
+                <li class="divider"></li>
+                @Html.Toolbar("Cancel")
+
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="pagetitle icon-48-article-add">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    </div>
+</div>
+<div id="submenu-box">
+    <div class="m">
+        @Html.Partial("_LanguageBar")
+        <div class="clr"></div>
+    </div>
+</div>
+<div id="system-message-container">
+</div>
+<div id="english-edit">@Html.Partial("_EditForm", Model)  </div>
+<div id="arabic-edit" style="display: none">@Html.Partial("_EditForm", (EP.CMS.Domain.PageModule.Entities.Info)ViewBag.ArabicModel)  </div>
+<script>
+    var defaults = {
+        selector: '#text-tinymce',
+        plugins: 'link image code preview paste',
+        toolbar1: "undo redo pastetext pasteword | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        link_list: GetUrl("GetAllDocuments", "Media"),
+        image_list: GetUrl("GetAllImages", "Media"),
+        
+    };
+    var arabicOptions = { selector: "#text-tinymce-ar", directionality: "rtl" };
+
+    tinymce.init(defaults);
+    tinymce.init($.extend({}, defaults, arabicOptions));
+
+</script>

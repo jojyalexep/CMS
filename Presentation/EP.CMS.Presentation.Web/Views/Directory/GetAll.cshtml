@@ -1,0 +1,10 @@
+﻿@model EP.CMS.Domain.DirectoryModule.Entities.Directory
+
+@{
+    ViewBag.Title = "Get All Directory";
+}
+
+@if (Model.ChildDirectory.Count > 0)
+{
+    Html.RenderPartial("ChildDirectory", Model.ChildDirectory);
+}

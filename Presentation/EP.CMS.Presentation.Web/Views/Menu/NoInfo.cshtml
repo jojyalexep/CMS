@@ -1,0 +1,19 @@
+﻿@model EP.CMS.Domain.ContentModule.Entities.ImageContent
+@{
+    Layout = null;
+}
+<div id="english-edit">
+    <fieldset class="adminform">
+        <div style="width: 230px;" class="fltlft">
+            @Html.Partial("~/Views/Media/_MenuView.cshtml", Model)
+        </div>
+    </fieldset>
+</div>
+<div id="arabic-edit" style="display: none">
+    <fieldset class="adminform">
+        <div style="width: 230px;" class="fltlft">
+            @Html.Partial("~/Views/Media/_MenuView.cshtml", (EP.CMS.Domain.ContentModule.Entities.ImageContent)ViewBag.ArabicModel)
+        </div>
+    </fieldset>
+</div>
+

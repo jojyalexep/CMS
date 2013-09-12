@@ -1,0 +1,8 @@
+﻿@model IEnumerable<EP.CMS.Domain.ContentModule.Entities.ImageContent>
+@{
+    
+    Layout = null;
+}
+<div id="english-edit">@Html.Partial("_Content", Model)  </div>
+<div id="arabic-edit" style="display: none">@Html.Partial("_Content", (IEnumerable<EP.CMS.Domain.ContentModule.Entities.ImageContent>)ViewBag.ArabicModel)  </div>
+

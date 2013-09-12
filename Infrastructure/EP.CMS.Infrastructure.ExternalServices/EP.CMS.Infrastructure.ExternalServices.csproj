@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{84FFA061-E27B-441A-A6A0-CCD3E7006551}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EP.CMS.Infrastructure.ExternalServices</RootNamespace>
+    <AssemblyName>EP.CMS.Infrastructure.ExternalServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Managers\BinaryManager.cs" />
+    <Compile Include="Managers\MenuManager.cs" />
+    <Compile Include="Managers\PageManager.cs" />
+    <Compile Include="MockManagers\MockBinaryManager.cs" />
+    <Compile Include="MockManagers\MockMenuManager.cs" />
+    <Compile Include="MockManagers\MockPageManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\RepoService.Arabic\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RepoService.English\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\InfoBannerTemplate.cs" />
+    <Compile Include="Utility\ImageCategoryUtil.cs" />
+    <Compile Include="Utility\StatusUtil.cs" />
+    <Compile Include="Utility\WSReponseHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.arrayList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.binaryContentModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.contentModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.menuModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.newsModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getBinaryContentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getBinaryContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getContentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getNewsListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getNewsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getPageIDListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getStyledContentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getStyledContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_getZoneIDListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_publishBinaryContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_publishContentOrderingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_publishMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_publishNewsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_publishStyledContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_searchNewsListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_updateBinaryContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_updateContentOrderingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_updateContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_updateMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_updateNewsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.opn_updateStyledContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\EP.CMS.Infrastructure.ExternalServices.RepoService.Arabic.styledContent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.Arabic\ICMSRepositoryWSService.wsdl" />
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.arrayList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.binaryContentModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.contentModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.menuModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.newsModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getBinaryContentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getBinaryContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getContentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getNewsListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getNewsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getPageIDListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getStyledContentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getStyledContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_getZoneIDListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_publishBinaryContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_publishContentOrderingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_publishMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_publishNewsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_publishStyledContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_searchNewsListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_updateBinaryContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_updateContentOrderingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_updateContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_updateMenuResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_updateNewsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.opn_updateStyledContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\EP.CMS.Infrastructure.ExternalServices.RepoService.English.styledContent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RepoService.English\ICMSRepositoryWSService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RepoService.Arabic\" />
+    <WCFMetadataStorage Include="Service References\RepoService.English\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RepoService.Arabic\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RepoService.Arabic\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RepoService.Arabic\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RepoService.English\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RepoService.English\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RepoService.English\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\EP.CMS.Domain\EP.CMS.Domain.csproj">
+      <Project>{c6e1c734-9dd0-42ea-8a89-f30e6b58fa94}</Project>
+      <Name>EP.CMS.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

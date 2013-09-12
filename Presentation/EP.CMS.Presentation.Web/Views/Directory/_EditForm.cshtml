@@ -1,0 +1,32 @@
+﻿@model EP.CMS.Domain.DirectoryModule.Entities.Directory
+
+
+
+<div id="element-box">
+    <div class="m">
+        @using (Ajax.BeginForm("Edit", "Directory", null, new AjaxOptions { OnSuccess = "SaveFormSuccess", OnFailure = "AjaxError" }, new { name = "adminForm" }))
+        {
+            <div class="width-60 fltlft">
+                <fieldset class="adminform">
+                    <legend>Directory</legend>
+                    <ul class="adminformlist">
+                        <li>
+                            <label id="title-lbl" class="hasTip required" title="">Name<span class="star">&nbsp;*</span></label>
+                            @Html.TextBoxFor(p => p.Name, new { @class = "inputbox required", size = "45" })</li>
+                        <li>
+                            <label title="">Parent Directory</label>
+                             @Html.DropDownListFor(p => p.ParentId, (SelectList)ViewBag.ParentDirectory)
+                        </li>
+                        <li>
+                            <label class="hasTip" title="">ID</label>
+                            <input type="text" value="@Model.Id" class="readonly" size="10" readonly="readonly"></li>
+                    </ul>
+                    <div class="clr"></div>
+                    @Html.HiddenFor(p => p.Id)
+                    <input type="hidden" name="Action" value="" />
+                </fieldset>
+            </div>
+            <div class="clr"></div>
+        }
+    </div>
+</div>

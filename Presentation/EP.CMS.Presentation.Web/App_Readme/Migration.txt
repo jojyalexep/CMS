@@ -1,0 +1,9 @@
+Steps for migration from Old CMS
+
+. Set the Mapping of the Fluent Nhibernate (Infrastructure\EP.CMS.Infrastructure.Data\UnitOfWork\Mapping) to Assigned Id.
+. Run Truncate CMS (same folder) in Oracle to truncate all tables( except Directory) and reset the sequence to start with 500.
+. Run the application from the old CMS Application
+. Go to Migration.aspx
+. Click on each category to migrate it
+. After migration, set the Mapping of the Fluent Nhibernate to Native Id.
+. Run the New Application

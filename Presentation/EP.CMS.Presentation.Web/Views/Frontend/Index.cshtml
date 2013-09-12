@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CMSLayout.cshtml";
+}
+
+
+<h2>Links to Update The Main Repository</h2>
+
+
+@Html.ActionLink("All Image", "UpdateImages")
+<br />
+
+@Html.ActionLink("All Article", "UpdateArticle")
+<br />
+
+@Html.ActionLink("All News", "UpdateNews")
+<br />
+
+@Html.ActionLink("All Menu", "UpdateMenu")
+<br />
+<br />
+<br />
+
+
+<h2>Links to Check  The Main Repository</h2>
+
+<h3>Menu</h3>
+@Html.ActionLink("Check English Menu Valid", "CheckMenu", new { lang = "ar" })
+<br />
+@Html.ActionLink("Check Arabic Menu Valid", "CheckMenu", new { lang = "ar" })
+<br />
+@Html.ActionLink("All Article", "UpdateArticle")
+<br />

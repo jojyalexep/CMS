@@ -1,0 +1,15 @@
+﻿@model EP.CMS.Domain.MenuModule.Entities.Menu
+
+@{
+    Layout = null;
+}
+<fieldset class="adminform">
+    <legend>Menu Edit</legend>
+    @if (Model != null)
+    {
+        <div>
+            @Html.Partial("_EditForm", Model)
+        </div>
+    }
+</fieldset>
+

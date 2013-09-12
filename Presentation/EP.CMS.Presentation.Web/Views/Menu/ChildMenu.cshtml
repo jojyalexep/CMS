@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EP.CMS.Domain.MenuModule.Entities.Menu>
+<ul class="nav nav-list collapse in">
+    @foreach (var menu in Model.OrderBy(p => p.Ranking))
+    {
+        if (!menu.IsDeleted)
+        {
+            var id = string.Format("menu{0}", menu.Id);
+        
+        <li>
+            <div class='crumb gi'>&nbsp;</div>
+            <div class="menu-text">
+                @if (menu.StatusId == (int)EP.CMS.Domain.CommonModule.Enum.Status.Raw)
+                {
+                    <span class="incomplete" title="Incomplete">!</span>
+                }
+                else if (menu.StatusId == (int)EP.CMS.Domain.CommonModule.Enum.Status.Published)
+                {
+                    <span class="complete" title="Published">P</span>
+                }
+                else
+                {
+                    <span class="incomplete" title="Unpublished">U</span>
+                }
+                @if (!menu.IsLeaf)
+                {
+                    @Html.ActionLink(menu.DisplayName, "Details", new { menuId = menu.Id }, new { @class = "menu-edit bold", id = id })
+                    
+                }
+                else
+                {
+                    @Html.ActionLink(menu.DisplayName, "Details", new { menuId = menu.Id }, new { @class = "menu-edit", id = id })
+                }
+                <input type="hidden" name="MenuId" value="@menu.Id " />
+                <input type="hidden" name="MenuLeaf" class="menu-leaf" value="@(menu.IsLeaf ? "1" : "0")" />
+            </div>
+            <div class="clr"></div>
+            @if (menu.ChildMenu.Count > 0)
+            {
+                Html.RenderPartial("ChildMenu", menu.ChildMenu);
+            }
+
+        </li>
+        }
+    }
+</ul>
+

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EP.CMS.Domain.ContentModule.Entities.Content>
+<fieldset class="adminform">
+    <legend>Gallery</legend>
+    @if (Model != null)
+    {
+        <div class="gal adminlist">
+            <ul>
+                @foreach (var content in Model.OrderBy(p => p.DisplayName))
+                {
+                    if (content.TypeId == (int)EP.CMS.Domain.ContentModule.Entities.ContentTypeEnum.Image ||
+                       content.TypeId == (int)EP.CMS.Domain.ContentModule.Entities.ContentTypeEnum.Banner)
+                    {
+                        @Html.Partial("_ImageListBlock", content as EP.CMS.Domain.ContentModule.Entities.ImageContent);
+                    }
+                    else if(content.TypeId == (int)EP.CMS.Domain.ContentModule.Entities.ContentTypeEnum.Docs)
+                    {
+                         @Html.Partial("_DocsListBlock", content as EP.CMS.Domain.ContentModule.Entities.Document);
+                    }
+
+                }
+            </ul>
+        </div>
+        <div class="container">
+            @Html.Partial("_TablePagination")
+        </div>
+    }
+</fieldset>
+<script>
+    EP.paginate(20);
+</script>

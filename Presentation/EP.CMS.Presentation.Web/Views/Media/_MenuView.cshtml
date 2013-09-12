@@ -1,0 +1,30 @@
+﻿@model EP.CMS.Domain.ContentModule.Entities.ImageContent
+@{
+    Layout = null;
+}
+
+<ul>
+    <li>
+        <h4>Banner</h4>
+    </li>
+    <li>
+        <div class="holder">
+            <img class="img-holder"  src="@Url.Content("~/" + Model.ThumbnailUrl)" alt="" />
+            <input type="hidden" class="img-id required"  name="ImageId" value="@(Model.Id == 0 ? "" : Model.Id.ToString())" />
+        </div>
+    </li>
+    <li>
+
+        <div>
+            <label class="img-name" title="">@Model.DisplayName</label>
+            <input type="hidden" id="hdnMediaController" value="@Url.Content("~/Media/")" />
+            <button onclick="return SelectNewImage(this, MenuImageUpload)" class="">
+                <img src="~/Content/images/icons/bplus.png" />
+            </button>
+            <button onclick="return SelectGalleryImage(this, MenuImageUpload);" class="">
+                <img src="~/Content/images/icons/gallery-icon.png" />
+
+            </button>
+        </div>
+    </li>
+</ul>

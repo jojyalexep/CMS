@@ -1,0 +1,37 @@
+﻿@model EP.CMS.Domain.ContentModule.Entities.ImageContent
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("Edit", "Media", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset class="adminform">
+        <legend>Edit Media</legend>
+        <div class="fltlft">
+            <label>Display name:</label>
+            @Html.TextBoxFor(p => p.DisplayName)<br />
+            <br />
+            <label>File name:</label>
+            <input type="file" name="File" onchange="readURL(this);" />
+            <br />
+            <label>Directory:</label>
+            <input type="text" class="readonly lblDirectory" value="@ViewBag.Directory" name="Directory" size="10" readonly="readonly">
+            <br />
+            <br />
+            <input type="hidden" name="ImageId" value="@Model.Id" />
+            @Html.HiddenFor(p=>p.TypeId)
+            @Html.HiddenFor(p=>p.CategoryId)
+            <button onclick="" class="btn btn-small btn-success">
+                <i class="icon-new icon-white"></i>
+                Save
+            </button>
+            <button onclick="return NewMediaCancel();" class="btn btn-small">
+                <span class="icon-options"></span>
+                Cancel
+            </button>
+        </div>
+        <div style="float: right;" id="divPreview">
+            <img id="imgPreview" src="@Url.Content("~/" + Model.ThumbnailUrl)" width="200" height="200" style="width: 200px;" class="imgclass" alt="your image" />
+
+        </div>
+    </fieldset>
+}

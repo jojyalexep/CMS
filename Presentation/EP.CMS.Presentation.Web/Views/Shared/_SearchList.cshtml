@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+    
+}
+
+
+<div class="filter-search fltlft">
+    <label class="filter-search-lbl" for="filter_search">Filter:</label>
+    <input type="text" name="filter_search" id="filter_search" value="@Request.QueryString["query"]" title="Search in title">
+    <button type="button" onclick="SearchList();">Search</button>
+    <button type="button" id="btnSearchClear">Clear</button>
+</div>
+<script>
+    $("#filter_search").keypress(function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            SearchList();
+        }
+    });
+
+    $("#btnSearchClear").click(function (e) {
+        $("#filter_search").val("");
+        SearchList();
+    });
+</script>

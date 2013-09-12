@@ -1,0 +1,55 @@
+﻿@model EP.CMS.Domain.MenuModule.Entities.Menu
+@{
+    var arabicMenu = (EP.CMS.Domain.MenuModule.Entities.Menu)ViewBag.ArabicModel;
+}
+
+@using (Ajax.BeginForm("Edit", "Menu", null, new AjaxOptions { OnSuccess = "SaveFormSuccess", OnFailure = "AjaxError" }, new { name = "adminForm" }))
+{
+    <div class="fltlft">
+        <ul class="adminformlist">
+            @*<li>
+                            <label id="title-lbl" class="hasTip required" title="">Name<span class="star">&nbsp;*</span></label>
+                            @Html.TextBoxFor(p => p.Name, new { @class = "inputbox required", size = "45" })
+                        </li>*@
+            <li>
+                <label title="">Display Name</label>
+                @Html.TextBoxFor(p => p.DisplayName, new { @class = "inputbox", size = "45" })
+            </li>
+            <li>
+                <label title="">Arabic Display Name</label>
+                <input type="text" name="ArabicDisplayName" value="@arabicMenu.DisplayName" class = "inputbox", size = "45" />
+            </li>
+            <li>
+                <label class="hasTip" title="">Parent Menu</label>
+                @if (Model.LanguageId == (int)EP.CMS.Domain.CommonModule.Enum.Language.English)
+                {
+                    @Html.DropDownListFor(p => p.ParentId, (SelectList)ViewBag.ParentMenu);
+                }
+                else
+                {
+                    @Html.DropDownListFor(p => p.ParentId, (SelectList)ViewBag.ArabicParentMenu);
+                }
+            </li>
+            <li>
+                <label class="hasTip" title="">ID</label>
+                <input type="text" value="@Model.Id" class="readonly" size="10" readonly="readonly"></li>
+        </ul>
+        <div class="clr"></div>
+        @Html.HiddenFor(p => p.Id)
+        @Html.HiddenFor(p => p.LinkedId)
+
+        <input type="hidden" name="Action" value="save" />
+        <div class="fltrt">
+            <button class="btn btn-small btn-success btn-add">
+                <i class="icon-new icon-white"></i>
+                Add
+            </button>
+            <button class="btn btn-small btn-cancel">
+                <span class="icon-options"></span>
+                Cancel
+            </button>
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="clr"></div>
+}

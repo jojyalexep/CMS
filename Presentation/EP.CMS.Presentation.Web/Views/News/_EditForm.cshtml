@@ -1,0 +1,65 @@
+﻿@model EP.CMS.Domain.PageModule.Entities.News
+
+<div id="element-box">
+    <div class="m">
+        @using (Ajax.BeginForm("Edit", "News", null, new AjaxOptions { OnSuccess = "SaveFormSuccess", OnFailure = "AjaxError" }, new { name = "adminForm" }))
+        {
+            <div class="width-60 fltlft">
+                <fieldset class="adminform">
+                    <legend>Create News</legend>
+                    <ul class="adminformlist">
+                        <li>
+                            <label id="title-lbl" class="hasTip required" title="">Title<span class="star">&nbsp;*</span></label>
+                            @Html.TextBoxFor(p => p.Title, new { @class = "inputbox required", size = "45" }) </li>
+                        <li>
+                            <label class="hasTip" title="">Subtitle</label>
+                            @Html.TextBoxFor(p => p.SubTitle, new { @class = "inputbox", size = "45" })
+                        </li>
+                        <li>
+                            <label title="">Keywords</label>
+                            @Html.TextBoxFor(p => p.Keywords, new { @class = "inputbox required", size = "45" })
+                        </li>
+
+                        <li>
+                            <label title="">News Date<span class="star">&nbsp;*</span></label>
+                            @Html.TextBoxFor(p => p.NewsDate, "{0:MM/dd/yyyy}", new { @class = "inputbox date required", size = "45" })
+                        </li>
+
+                        <li>
+                            <label class="hasTip" title="">News Summary</label>
+                            @Html.TextAreaFor(p => p.Summary, 5, 5, new { @class = "inputbox required" })
+                        </li>
+                        <li>
+                            <label i class="hasTip" title="">Language</label>
+                            <input type="text" value="@EP.CMS.Presentation.Web.Helpers.EPHtmlHelper.GetLanguage(Model.LanguageId)" class="readonly" size="10" readonly="readonly">
+                            @Html.HiddenFor(p => p.LanguageId)
+                        </li>
+                        <li>
+                            <label class="hasTip" title="">ID</label>
+                            <input type="text" value="@Model.Id" class="readonly" size="10" readonly="readonly"></li>
+                    </ul>
+                    <div class="clr"></div>
+                    <label id="jform_articletext-lbl" for="jform_articletext" class="hasTip" title="">Read more...</label>
+                    <div class="clr"></div>
+                    @if (Model.LanguageId == (int)EP.CMS.Domain.CommonModule.Enum.Language.Arabic)
+                    {
+                        @Html.TextAreaFor(p => p.Content, new {  id = "text-tinymce-ar", @class = "inputbox  text-tinymce-ar required", style = "width : 720px;height: 350px" })
+                    }
+                    else
+                    {
+                        @Html.TextAreaFor(p => p.Content, new { id = "text-tinymce", @class = "inputbox  text-tinymce required", style = "width : 720px;height: 350px" })
+                    }
+                    @Html.HiddenFor(p => p.Id)
+                    @Html.HiddenFor(p => p.LinkedId)
+                    <input type="hidden" class="frontend_url" value="@EP.CMS.Presentation.Web.Utilities.LinkManager.ViewFrontEndNews(Model)" />
+                    <input type="hidden" name="Action" value="" />
+                </fieldset>
+            </div>
+            <div class="width-40 fltrt">
+                @Html.Partial("~/Views/Media/_ImageExt.cshtml", Model.NewsImage)
+            </div>
+            <div class="clr"></div>
+            <div class="clr"></div>
+        }
+    </div>
+</div>

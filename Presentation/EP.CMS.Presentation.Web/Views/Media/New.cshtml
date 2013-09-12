@@ -1,0 +1,43 @@
+﻿@model EP.CMS.Domain.ContentModule.Entities.ImageContent
+@{
+    Layout = null;    
+}
+<script src="~/Scripts/jquery.form.min.js"></script>
+@using (Html.BeginForm("New", "Media", FormMethod.Post, new {  id="formAddMedia" })){
+    <fieldset class="adminform">
+        <legend>Add Media</legend>
+        <input type="hidden" name="Category" value="" id="hdnCategory" />
+        <div style="float: left;" id="menu-new">
+            <div>
+                <label>Display name:</label>
+                <input type="text" class="file-name" name="DisplayName" />
+                <br />
+                <br />
+                <label>File name:</label>
+                <input type="file" name="File" class="file-input" />
+                <br />
+                <br />
+                <label>Directory:</label>
+                <input type="text" value="@ViewBag.Directory" name="Directory" class="file-input lblDirectory" readonly="readonly" />
+            </div>
+            <div class="clr"></div>
+            <div class="fltrt">
+                <button class="btn btn-small btn-success btn-add">
+                    <i class="icon-new icon-white"></i>
+                    Add
+                </button>
+                <button class="btn btn-small  btn-cancel">
+                    <span class="icon-options"></span>
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </fieldset>
+}
+
+<script>
+
+
+
+
+</script>

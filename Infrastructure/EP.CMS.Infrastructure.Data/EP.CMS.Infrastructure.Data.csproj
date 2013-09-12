@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C85E3558-4A61-4DF2-BB9B-C701BBBB7FC6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EP.CMS.Infrastructure.Data</RootNamespace>
+    <AssemblyName>EP.CMS.Infrastructure.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\packages\NHibernate.3.3.2.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Oracle.DataAccess\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContentRepository.cs" />
+    <Compile Include="Repositories\DirectoryRepository.cs" />
+    <Compile Include="Repositories\MenuRepository.cs" />
+    <Compile Include="Repositories\PageRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="SeedWork\Repository.cs" />
+    <Compile Include="UnitOfWork\MainUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\Mapping\ContentMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\DocsInfoMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\DirectoryMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\MenuMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\ImageInfoMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\InfoMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\NewsMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\PageMap.cs" />
+    <Compile Include="UnitOfWork\Mapping\UserMap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\EP.CMS.Domain\EP.CMS.Domain.csproj">
+      <Project>{c6e1c734-9dd0-42ea-8a89-f30e6b58fa94}</Project>
+      <Name>EP.CMS.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EP.CMS.Infrastructure.File\EP.CMS.Infrastructure.Files.csproj">
+      <Project>{7e623328-6d54-4267-b01c-40ef1e04c7e2}</Project>
+      <Name>EP.CMS.Infrastructure.Files</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

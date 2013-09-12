@@ -1,0 +1,144 @@
+﻿@model IEnumerable<EP.CMS.Domain.PageModule.Entities.Info>
+
+@{
+    ViewBag.Title = "Article Manager";
+    Layout = "~/Views/Shared/_CMSLayout.cshtml";
+}
+
+@section HeaderSection{
+    <link href="~/Scripts/simple_paginate/simplePagination.css" rel="stylesheet" />
+    <script src="~/Scripts/simple_paginate/jquery.simplePagination.js"></script>
+    <script>
+        EP.paginate();
+    </script>
+
+}
+
+<div id="toolbar-box">
+    <div class="m">
+        <div class="toolbar-list" id="toolbar">
+            <ul>
+                @Html.Toolbar("New")
+                @Html.Toolbar("Edit")
+                <li class="divider"></li>
+                @Html.Toolbar("Publish")
+                @Html.Toolbar("Unpublish")
+                <li class="divider"></li>
+                @Html.Toolbar("Trash")
+            </ul>
+            <div class="clr"></div>
+        </div>
+        <div class="pagetitle icon-48-article">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    </div>
+</div>
+<div id="submenu-box">
+    <div class="m">
+        <ul id="submenu">
+            <li>
+                <a class="active" href="#">Articles</a>	</li>
+            <li><a class="" href="#">Sub Articles</a>	</li>
+
+        </ul>
+        <div class="clr"></div>
+    </div>
+</div>
+<div id="system-message-container">
+</div>
+<div id="element-box">
+    <div class="m">
+        <form action="#" method="post" name="adminForm" id="adminForm">
+            <fieldset id="filter-bar">
+                @Html.Partial("_SearchList")
+                <div class="filter-select fltrt">
+
+                    <select name="filter_state" class="inputbox" onchange="this.form.submit()">
+                        <option value="">- Select Status -</option>
+                        <option value="1">Published</option>
+                        <option value="0">Unpublished</option>
+                        <option value="2">Archived</option>
+                        <option value="-2">Trashed</option>
+                        <option value="*">All</option>
+                    </select>
+
+                    <select name="filter_language" class="inputbox" onchange="this.form.submit()">
+                        <option value="">- Select Language -</option>
+                        <option value="*">All</option>
+                        <option value="en-GB">English (UK)</option>
+                    </select>
+                </div>
+            </fieldset>
+            <div class="clr"></div>
+            <table class="adminlist">
+                <thead>
+                    <tr>
+                        <th width="1%">
+                            <input type="checkbox" name="checkall-toggle" value="" title="Check All" onclick="EP.checkAll(this)">
+                        </th>
+                        <th width="80%">Info Title		
+                        </th>
+                        <th width="5%">
+                            <a href="#" title="Click to sort by this column">Status</a>
+                        </th>
+                        <th width="10%">
+                            <a href="#" title="Click to sort by this column">Keywords</a>
+                        </th>
+                        <th width="5%">
+                            <a href="#" title="Click to sort by this column">Language</a>
+                        </th>
+                        <th width="1%" class="nowrap">
+                            <a href="#" title="Click to sort by this column">ID</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <div class="container">
+                                @Html.Partial("_TablePagination")
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var info in Model.OrderByDescending(p=>p.CreatedDate))
+                    {
+                        <tr class="data-row">
+                            <td class="center">
+                                <input type="checkbox" name="cid[]" class="cbox-form" value="@info.Id" title="Checkbox for row 1">
+                            </td>
+                            <td>
+                                @Html.ActionLink(info.Title, "Edit", new { infoId = info.Id })
+                                <p class="smallsub">
+                                    (<span>Name: </span>@info.Name)
+                                </p>
+                            </td>
+                            <td class="center">
+                                @if (info.StatusId == (int)EP.CMS.Domain.CommonModule.Enum.Status.Published)
+                                {
+                                    <a class="jgrid" href="javascript:void(0);"
+                                        onclick="return listItemTask(&#39;cb0&#39;,&#39;banners.unpublish&#39;)"
+                                        title="Published and is Current">
+                                        <span class="state publish"><span class="text">Published</span></span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="jgrid hasTip" href="javascript:void(0);"
+                                        onclick="return listItemTask('cb0','articles.publish')" title="">
+                                        <span class="state unpublish"><span class="text">Unpublished</span></span></a>
+
+                                }
+                            </td>
+                            <td class="center">@info.Keywords				</td>
+                            <td class="center nowrap">All								</td>
+                            <td class="center">@info.Id				</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+        <div class="clr"></div>
+    </div>
+</div>

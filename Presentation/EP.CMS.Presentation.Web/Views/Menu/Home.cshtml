@@ -1,0 +1,28 @@
+﻿@model IEnumerable<EP.CMS.Domain.ContentModule.Entities.ImageContent>
+@{
+    Layout = null;
+}
+
+<div id="english-edit">
+    <fieldset class="adminform">
+        @foreach (var banner in Model)
+        {
+            <div style="width: 230px;" class="fltlft">
+                @Html.Partial("~/Views/Media/_MenuView.cshtml", banner)
+            </div>
+        }
+
+    </fieldset>
+</div>
+<div id="arabic-edit" style="display: none">
+    <fieldset class="adminform">
+        @foreach (var banner in (IEnumerable<EP.CMS.Domain.ContentModule.Entities.ImageContent>)ViewBag.ArabicModel)
+        {
+            <div style="width: 230px;" class="fltlft">
+                @Html.Partial("~/Views/Media/_MenuView.cshtml", banner)
+            </div>
+        }
+
+    </fieldset>
+</div>
+

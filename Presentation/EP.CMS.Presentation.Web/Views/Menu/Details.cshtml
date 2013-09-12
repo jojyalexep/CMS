@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+    var info = (EP.CMS.Domain.PageModule.Entities.Info)ViewBag.Info;
+    var arabicInfo = (EP.CMS.Domain.PageModule.Entities.Info)ViewBag.ArabicModel;
+}
+<div id="english-edit">
+   @Html.Partial("_DetailForm",info)
+</div>
+<div id="arabic-edit" style="display: none">
+    @Html.Partial("_DetailForm",arabicInfo)
+</div>
+<input type="hidden" id="hdnMainInfoId" value="@info.Id" />
+
+
+

@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://inf.cms_repo.epg" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ICMSRepositoryWSService" targetNamespace="http://inf.cms_repo.epg" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://jaxb.dev.java.net/array" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="stringArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ns0="http://jaxb.dev.java.net/array" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://inf.cms_repo.epg" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://jaxb.dev.java.net/array" />
+      <xs:complexType name="arrayList">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:abstractList">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="abstractList" abstract="true">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:abstractCollection">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="abstractCollection" abstract="true">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="binaryContentModel">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:contentModel">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="category" type="xs:string" />
+              <xs:element minOccurs="0" name="contentBinary" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="contentID" type="xs:string" />
+              <xs:element minOccurs="0" name="contentType" type="xs:string" />
+              <xs:element minOccurs="0" name="displayName" type="xs:string" />
+              <xs:element minOccurs="0" name="urlReference" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="contentModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="audience" type="xs:string" />
+          <xs:element minOccurs="0" name="contentDate" type="xs:string" />
+          <xs:element minOccurs="0" name="contentXML" type="xs:string" />
+          <xs:element minOccurs="0" name="dateEffectiveFrom" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateEffectiveTo" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="imageID" type="xs:string" />
+          <xs:element minOccurs="0" name="keyWords" type="xs:string" />
+          <xs:element minOccurs="0" name="pageID" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="subTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="summary" type="xs:string" />
+          <xs:element minOccurs="0" name="title" type="xs:string" />
+          <xs:element minOccurs="0" name="zoneID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="styledContent">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:contentModel">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="content" type="xs:string" />
+              <xs:element minOccurs="0" name="contentURL" type="xs:string" />
+              <xs:element minOccurs="0" name="style" type="xs:string" />
+              <xs:element minOccurs="0" name="styleLink" type="xs:string" />
+              <xs:element minOccurs="0" name="styleType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="newsModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="audience" type="xs:string" />
+          <xs:element minOccurs="0" name="contextID" type="xs:string" />
+          <xs:element minOccurs="0" name="dateEffectiveFrom" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateEffectiveTo" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="newsDate" type="xs:string" />
+          <xs:element minOccurs="0" name="newsID" type="xs:string" />
+          <xs:element minOccurs="0" name="newsImageID" type="xs:string" />
+          <xs:element minOccurs="0" name="newsKeyWords" type="xs:string" />
+          <xs:element minOccurs="0" name="newsReadMore" type="xs:string" />
+          <xs:element minOccurs="0" name="newsSubTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="newsSummary" type="xs:string" />
+          <xs:element minOccurs="0" name="newsTitle" type="xs:string" />
+          <xs:element minOccurs="0" name="remarks" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="urlReference" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="menuModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="audience" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="childMenuList" nillable="true" type="tns:menuModel" />
+          <xs:element minOccurs="0" name="contextID" type="xs:string" />
+          <xs:element minOccurs="0" name="dateEffectiveFrom" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateEffectiveTo" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="displayName" type="xs:string" />
+          <xs:element name="leaf" type="xs:boolean" />
+          <xs:element name="level" type="xs:int" />
+          <xs:element minOccurs="0" name="linkedArticleID" type="xs:string" />
+          <xs:element minOccurs="0" name="menuID" type="xs:string" />
+          <xs:element minOccurs="0" name="menuInstance" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="urlReference" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="binaryContentModelArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:binaryContentModel" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="newsModelArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:newsModel" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="styledContentArray" final="#all">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:styledContent" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="p_category" nillable="true" type="xs:string" />
+      <xs:element name="p_published" nillable="true" type="xs:boolean" />
+      <xs:element name="ret_binaryContentList" nillable="true" type="tns:binaryContentModelArray" />
+      <xs:element name="p_authID" nillable="true" type="xs:string" />
+      <xs:element name="ret_publishContentOrdering" nillable="true" type="xs:string" />
+      <xs:element name="p_pageID" nillable="true" type="xs:string" />
+      <xs:element name="p_zoneID" nillable="true" type="xs:string" />
+      <xs:element name="ret_content" nillable="true" type="tns:contentModel" />
+      <xs:element name="p_contentID" nillable="true" type="xs:string" />
+      <xs:element name="ret_binaryContent" nillable="true" type="tns:binaryContentModel" />
+      <xs:element name="p_styledContent" nillable="true" type="tns:styledContent" />
+      <xs:element name="ret_updateStyledContent" nillable="true" type="xs:string" />
+      <xs:element name="ret_pageIDList" nillable="true" type="ns0:stringArray" />
+      <xs:element name="p_contextID" nillable="true" type="xs:string" />
+      <xs:element name="p_text" nillable="true" type="xs:string" />
+      <xs:element name="ret_searchNewsList" nillable="true" type="tns:newsModelArray" />
+      <xs:element name="p_styleType" nillable="true" type="xs:string" />
+      <xs:element name="ret_styledContentList" nillable="true" type="tns:styledContentArray" />
+      <xs:element name="p_menuID" nillable="true" type="xs:string" />
+      <xs:element name="ret_menu" nillable="true" type="tns:menuModel" />
+      <xs:element name="opn_getZoneIDList" nillable="true" type="xs:string" />
+      <xs:element name="ret_zoneIDList" nillable="true" type="ns0:stringArray" />
+      <xs:element name="ret_publishStyledContent" nillable="true" type="xs:string" />
+      <xs:element name="p_contentModel" nillable="true" type="tns:contentModel" />
+      <xs:element name="ret_updateContent" nillable="true" type="xs:string" />
+      <xs:element name="ret_newsList" nillable="true" type="tns:newsModelArray" />
+      <xs:element name="p_newsID" nillable="true" type="xs:string" />
+      <xs:element name="ret_publishNews" nillable="true" type="xs:string" />
+      <xs:element name="p_categoryID" nillable="true" type="xs:string" />
+      <xs:element name="ret_publishBinaryContent" nillable="true" type="xs:string" />
+      <xs:element name="ret_contentList" nillable="true" type="tns:arrayList" />
+      <xs:element name="p_binaryContentModel" nillable="true" type="tns:binaryContentModel" />
+      <xs:element name="ret_updateBinaryContent" nillable="true" type="xs:string" />
+      <xs:element name="p_idList" nillable="true" type="ns0:stringArray" />
+      <xs:element name="ret_updateContentOrdering" nillable="true" type="xs:string" />
+      <xs:element name="p_menuModel" nillable="true" type="tns:menuModel" />
+      <xs:element name="ret_updateMenu" nillable="true" type="xs:string" />
+      <xs:element name="p_newsModel" nillable="true" type="tns:newsModel" />
+      <xs:element name="p_specialHints" nillable="true" type="xs:string" />
+      <xs:element name="ret_updateNews" nillable="true" type="xs:string" />
+      <xs:element name="ret_news" nillable="true" type="tns:newsModel" />
+      <xs:element name="ret_publishMenu" nillable="true" type="xs:string" />
+      <xs:element name="ret_styledContent" nillable="true" type="tns:styledContent" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="opn_updateStyledContent">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_styledContent" element="tns:p_styledContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_getMenuResponse">
+    <wsdl:part name="ret_menu" element="tns:ret_menu" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishNews">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_contextID" element="tns:p_contextID" />
+    <wsdl:part name="p_newsID" element="tns:p_newsID" />
+  </wsdl:message>
+  <wsdl:message name="opn_getPageIDListResponse">
+    <wsdl:part name="ret_pageIDList" element="tns:ret_pageIDList" />
+  </wsdl:message>
+  <wsdl:message name="opn_getStyledContentResponse">
+    <wsdl:part name="ret_styledContent" element="tns:ret_styledContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_getMenu">
+    <wsdl:part name="p_contextID" element="tns:p_contextID" />
+    <wsdl:part name="p_menuID" element="tns:p_menuID" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateContentOrdering">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_category" element="tns:p_category" />
+    <wsdl:part name="p_idList" element="tns:p_idList" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateMenu">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_menuModel" element="tns:p_menuModel" />
+  </wsdl:message>
+  <wsdl:message name="opn_getNews">
+    <wsdl:part name="p_contextID" element="tns:p_contextID" />
+    <wsdl:part name="p_newsID" element="tns:p_newsID" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateBinaryContent">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_binaryContentModel" element="tns:p_binaryContentModel" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateContentResponse">
+    <wsdl:part name="ret_updateContent" element="tns:ret_updateContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishMenuResponse">
+    <wsdl:part name="ret_publishMenu" element="tns:ret_publishMenu" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateNewsResponse">
+    <wsdl:part name="ret_updateNews" element="tns:ret_updateNews" />
+  </wsdl:message>
+  <wsdl:message name="opn_getBinaryContentList">
+    <wsdl:part name="p_category" element="tns:p_category" />
+    <wsdl:part name="p_published" element="tns:p_published" />
+  </wsdl:message>
+  <wsdl:message name="opn_getNewsList">
+    <wsdl:part name="p_contextID" element="tns:p_contextID" />
+    <wsdl:part name="p_published" element="tns:p_published" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateBinaryContentResponse">
+    <wsdl:part name="ret_updateBinaryContent" element="tns:ret_updateBinaryContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_getContentListResponse">
+    <wsdl:part name="ret_contentList" element="tns:ret_contentList" />
+  </wsdl:message>
+  <wsdl:message name="opn_searchNewsListResponse">
+    <wsdl:part name="ret_searchNewsList" element="tns:ret_searchNewsList" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateNews">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_newsModel" element="tns:p_newsModel" />
+    <wsdl:part name="p_specialHints" element="tns:p_specialHints" />
+  </wsdl:message>
+  <wsdl:message name="opn_getContent">
+    <wsdl:part name="p_pageID" element="tns:p_pageID" />
+    <wsdl:part name="p_zoneID" element="tns:p_zoneID" />
+  </wsdl:message>
+  <wsdl:message name="opn_getStyledContent">
+    <wsdl:part name="p_pageID" element="tns:p_pageID" />
+    <wsdl:part name="p_zoneID" element="tns:p_zoneID" />
+    <wsdl:part name="p_styleType" element="tns:p_styleType" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishStyledContent">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_pageID" element="tns:p_pageID" />
+    <wsdl:part name="p_zoneID" element="tns:p_zoneID" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateContentOrderingResponse">
+    <wsdl:part name="ret_updateContentOrdering" element="tns:ret_updateContentOrdering" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateStyledContentResponse">
+    <wsdl:part name="ret_updateStyledContent" element="tns:ret_updateStyledContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_getBinaryContentResponse">
+    <wsdl:part name="ret_binaryContent" element="tns:ret_binaryContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_getStyledContentListResponse">
+    <wsdl:part name="ret_styledContentList" element="tns:ret_styledContentList" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishBinaryContent">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_categoryID" element="tns:p_categoryID" />
+    <wsdl:part name="p_contentID" element="tns:p_contentID" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateMenuResponse">
+    <wsdl:part name="ret_updateMenu" element="tns:ret_updateMenu" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishBinaryContentResponse">
+    <wsdl:part name="ret_publishBinaryContent" element="tns:ret_publishBinaryContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishNewsResponse">
+    <wsdl:part name="ret_publishNews" element="tns:ret_publishNews" />
+  </wsdl:message>
+  <wsdl:message name="opn_getNewsResponse">
+    <wsdl:part name="ret_news" element="tns:ret_news" />
+  </wsdl:message>
+  <wsdl:message name="opn_getStyledContentList">
+    <wsdl:part name="p_pageID" element="tns:p_pageID" />
+    <wsdl:part name="p_styleType" element="tns:p_styleType" />
+    <wsdl:part name="p_published" element="tns:p_published" />
+  </wsdl:message>
+  <wsdl:message name="opn_getContentResponse">
+    <wsdl:part name="ret_content" element="tns:ret_content" />
+  </wsdl:message>
+  <wsdl:message name="opn_getZoneIDList">
+    <wsdl:part name="opn_getZoneIDList" element="tns:opn_getZoneIDList" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishMenu">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_contextID" element="tns:p_contextID" />
+    <wsdl:part name="p_menuID" element="tns:p_menuID" />
+  </wsdl:message>
+  <wsdl:message name="opn_getPageIDList" />
+  <wsdl:message name="opn_getNewsListResponse">
+    <wsdl:part name="ret_newsList" element="tns:ret_newsList" />
+  </wsdl:message>
+  <wsdl:message name="opn_getBinaryContentListResponse">
+    <wsdl:part name="ret_binaryContentList" element="tns:ret_binaryContentList" />
+  </wsdl:message>
+  <wsdl:message name="opn_getZoneIDListResponse">
+    <wsdl:part name="ret_zoneIDList" element="tns:ret_zoneIDList" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishContentOrdering">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_category" element="tns:p_category" />
+  </wsdl:message>
+  <wsdl:message name="opn_getContentList">
+    <wsdl:part name="p_pageID" element="tns:p_pageID" />
+    <wsdl:part name="p_published" element="tns:p_published" />
+  </wsdl:message>
+  <wsdl:message name="opn_getBinaryContent">
+    <wsdl:part name="p_category" element="tns:p_category" />
+    <wsdl:part name="p_contentID" element="tns:p_contentID" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishStyledContentResponse">
+    <wsdl:part name="ret_publishStyledContent" element="tns:ret_publishStyledContent" />
+  </wsdl:message>
+  <wsdl:message name="opn_updateContent">
+    <wsdl:part name="p_authID" element="tns:p_authID" />
+    <wsdl:part name="p_contentModel" element="tns:p_contentModel" />
+  </wsdl:message>
+  <wsdl:message name="opn_searchNewsList">
+    <wsdl:part name="p_contextID" element="tns:p_contextID" />
+    <wsdl:part name="p_text" element="tns:p_text" />
+  </wsdl:message>
+  <wsdl:message name="opn_publishContentOrderingResponse">
+    <wsdl:part name="ret_publishContentOrdering" element="tns:ret_publishContentOrdering" />
+  </wsdl:message>
+  <wsdl:portType name="ICMSRepositorySEI">
+    <wsdl:operation name="opn_getBinaryContentList">
+      <wsdl:input name="opn_getBinaryContentList" message="tns:opn_getBinaryContentList" />
+      <wsdl:output name="opn_getBinaryContentListResponse" message="tns:opn_getBinaryContentListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishContentOrdering">
+      <wsdl:input name="opn_publishContentOrdering" message="tns:opn_publishContentOrdering" />
+      <wsdl:output name="opn_publishContentOrderingResponse" message="tns:opn_publishContentOrderingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getContent">
+      <wsdl:input name="opn_getContent" message="tns:opn_getContent" />
+      <wsdl:output name="opn_getContentResponse" message="tns:opn_getContentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getBinaryContent">
+      <wsdl:input name="opn_getBinaryContent" message="tns:opn_getBinaryContent" />
+      <wsdl:output name="opn_getBinaryContentResponse" message="tns:opn_getBinaryContentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateStyledContent">
+      <wsdl:input name="opn_updateStyledContent" message="tns:opn_updateStyledContent" />
+      <wsdl:output name="opn_updateStyledContentResponse" message="tns:opn_updateStyledContentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getPageIDList">
+      <wsdl:input name="opn_getPageIDList" message="tns:opn_getPageIDList" />
+      <wsdl:output name="opn_getPageIDListResponse" message="tns:opn_getPageIDListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_searchNewsList">
+      <wsdl:input name="opn_searchNewsList" message="tns:opn_searchNewsList" />
+      <wsdl:output name="opn_searchNewsListResponse" message="tns:opn_searchNewsListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getStyledContentList">
+      <wsdl:input name="opn_getStyledContentList" message="tns:opn_getStyledContentList" />
+      <wsdl:output name="opn_getStyledContentListResponse" message="tns:opn_getStyledContentListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getMenu">
+      <wsdl:input name="opn_getMenu" message="tns:opn_getMenu" />
+      <wsdl:output name="opn_getMenuResponse" message="tns:opn_getMenuResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getZoneIDList">
+      <wsdl:input name="opn_getZoneIDList" message="tns:opn_getZoneIDList" />
+      <wsdl:output name="opn_getZoneIDListResponse" message="tns:opn_getZoneIDListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishStyledContent">
+      <wsdl:input name="opn_publishStyledContent" message="tns:opn_publishStyledContent" />
+      <wsdl:output name="opn_publishStyledContentResponse" message="tns:opn_publishStyledContentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateContent">
+      <wsdl:input name="opn_updateContent" message="tns:opn_updateContent" />
+      <wsdl:output name="opn_updateContentResponse" message="tns:opn_updateContentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getNewsList">
+      <wsdl:input name="opn_getNewsList" message="tns:opn_getNewsList" />
+      <wsdl:output name="opn_getNewsListResponse" message="tns:opn_getNewsListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishNews">
+      <wsdl:input name="opn_publishNews" message="tns:opn_publishNews" />
+      <wsdl:output name="opn_publishNewsResponse" message="tns:opn_publishNewsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishBinaryContent">
+      <wsdl:input name="opn_publishBinaryContent" message="tns:opn_publishBinaryContent" />
+      <wsdl:output name="opn_publishBinaryContentResponse" message="tns:opn_publishBinaryContentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getContentList">
+      <wsdl:input name="opn_getContentList" message="tns:opn_getContentList" />
+      <wsdl:output name="opn_getContentListResponse" message="tns:opn_getContentListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateBinaryContent">
+      <wsdl:input name="opn_updateBinaryContent" message="tns:opn_updateBinaryContent" />
+      <wsdl:output name="opn_updateBinaryContentResponse" message="tns:opn_updateBinaryContentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateContentOrdering">
+      <wsdl:input name="opn_updateContentOrdering" message="tns:opn_updateContentOrdering" />
+      <wsdl:output name="opn_updateContentOrderingResponse" message="tns:opn_updateContentOrderingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateMenu">
+      <wsdl:input name="opn_updateMenu" message="tns:opn_updateMenu" />
+      <wsdl:output name="opn_updateMenuResponse" message="tns:opn_updateMenuResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateNews">
+      <wsdl:input name="opn_updateNews" message="tns:opn_updateNews" />
+      <wsdl:output name="opn_updateNewsResponse" message="tns:opn_updateNewsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getNews">
+      <wsdl:input name="opn_getNews" message="tns:opn_getNews" />
+      <wsdl:output name="opn_getNewsResponse" message="tns:opn_getNewsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishMenu">
+      <wsdl:input name="opn_publishMenu" message="tns:opn_publishMenu" />
+      <wsdl:output name="opn_publishMenuResponse" message="tns:opn_publishMenuResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="opn_getStyledContent">
+      <wsdl:input name="opn_getStyledContent" message="tns:opn_getStyledContent" />
+      <wsdl:output name="opn_getStyledContentResponse" message="tns:opn_getStyledContentResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICMSRepositoryWSServiceSoapBinding" type="tns:ICMSRepositorySEI">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="opn_getBinaryContentList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getBinaryContentList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getBinaryContentListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishContentOrdering">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_publishContentOrdering">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_publishContentOrderingResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getBinaryContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getBinaryContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getBinaryContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateStyledContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_updateStyledContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_updateStyledContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getPageIDList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getPageIDList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getPageIDListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_searchNewsList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_searchNewsList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_searchNewsListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getStyledContentList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getStyledContentList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getStyledContentListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getMenu">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getMenu">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getMenuResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getZoneIDList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getZoneIDList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getZoneIDListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishStyledContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_publishStyledContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_publishStyledContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_updateContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_updateContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getNewsList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getNewsList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getNewsListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishNews">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_publishNews">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_publishNewsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishBinaryContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_publishBinaryContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_publishBinaryContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getContentList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getContentList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getContentListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateBinaryContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_updateBinaryContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_updateBinaryContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateContentOrdering">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_updateContentOrdering">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_updateContentOrderingResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateMenu">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_updateMenu">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_updateMenuResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_updateNews">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_updateNews">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_updateNewsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getNews">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getNews">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getNewsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_publishMenu">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_publishMenu">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_publishMenuResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="opn_getStyledContent">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="opn_getStyledContent">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="opn_getStyledContentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ICMSRepositoryWSService">
+    <wsdl:port name="ICMSRepositorySEIPort" binding="tns:ICMSRepositoryWSServiceSoapBinding">
+      <soap:address location="http://intranet/epg/cms_repo/ws/ar" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C6E1C734-9DD0-42EA-8A89-F30E6B58FA94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EP.CMS.Domain</RootNamespace>
+    <AssemblyName>EP.CMS.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonModule\Enum\Language.cs" />
+    <Compile Include="CommonModule\Enum\Status.cs" />
+    <Compile Include="ContentModule\ContentFactory.cs" />
+    <Compile Include="ContentModule\Entities\Content.cs" />
+    <Compile Include="ContentModule\Entities\ContentTypeEnum.cs" />
+    <Compile Include="ContentModule\Entities\Document.cs" />
+    <Compile Include="ContentModule\Entities\ImageCategoryEnum.cs" />
+    <Compile Include="ContentModule\Entities\Image.cs" />
+    <Compile Include="ContentModule\IBinaryExtRepository.cs" />
+    <Compile Include="ContentModule\IContentRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentModule\IContentServices.cs" />
+    <Compile Include="ContentModule\ContentServices.cs" />
+    <Compile Include="DirectoryModule\DirectoryServices.cs" />
+    <Compile Include="DirectoryModule\Entities\Directory.cs" />
+    <Compile Include="DirectoryModule\IDirectoryRepository.cs" />
+    <Compile Include="DirectoryModule\IDirectoryServices.cs" />
+    <Compile Include="MenuModule\Entities\Menu.cs" />
+    <Compile Include="MenuModule\IMenuExtRepository.cs" />
+    <Compile Include="MenuModule\IMenuRepository.cs" />
+    <Compile Include="MenuModule\IMenuServices.cs" />
+    <Compile Include="MenuModule\MenuServices.cs" />
+    <Compile Include="PageModule\Entities\Info.cs" />
+    <Compile Include="PageModule\IPageExtRepository.cs" />
+    <Compile Include="PageModule\IPageRepository.cs" />
+    <Compile Include="PageModule\Entities\News.cs" />
+    <Compile Include="PageModule\Entities\PageType.cs" />
+    <Compile Include="PageModule\Entities\PageTypeEnum.cs" />
+    <Compile Include="PageModule\Entities\Static.cs" />
+    <Compile Include="PageModule\Entities\Page.cs" />
+    <Compile Include="PageModule\IPageServices.cs" />
+    <Compile Include="PageModule\PageFactory.cs" />
+    <Compile Include="PageModule\PageServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeedWork\Entity.cs" />
+    <Compile Include="SeedWork\IRepository.cs" />
+    <Compile Include="SeedWork\ISpecification.cs" />
+    <Compile Include="SeedWork\IUnitOfWork.cs" />
+    <Compile Include="UserModule\Entities\EPUser.cs" />
+    <Compile Include="UserModule\IUserRepository.cs" />
+    <Compile Include="UserModule\IUserServices.cs" />
+    <Compile Include="UserModule\UserServices.cs" />
+    <Compile Include="UserModule\UserSessionService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\EP.CMS.Infrastructure.File\EP.CMS.Infrastructure.Files.csproj">
+      <Project>{7e623328-6d54-4267-b01c-40ef1e04c7e2}</Project>
+      <Name>EP.CMS.Infrastructure.Files</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

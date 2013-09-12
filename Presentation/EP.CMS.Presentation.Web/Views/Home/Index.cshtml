@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script>
+
+    function HomeRedirect(url) {
+        var base = "@Url.Content("~")";
+        window.location = base + url;
+    }
+
+
+
+
+</script>
+<div id="system-message-container">
+</div>
+<div id="element-box">
+    <div class="m">
+        <div class="clr"></div>
+        <table border="0" class="adminlist">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <input type="image" title="Manage Home Sections" src="content/images/home-icon/home-icon.png">
+                        <br>
+                        <span class="normaltxtgrey">Manage Home Page</span>
+                    </td>
+                    <td align="center">
+
+                        <input type="image" title="Manage Articles" onclick="HomeRedirect('Info')" src="content/images/home-icon/article-icon.png">
+                        <br>
+                        <span class="normaltxtgrey">Manage Articles</span>
+                    </td>
+                    <td align="center">
+                        <input type="image" title="Manage News Section" onclick="HomeRedirect('News')" src="content/images/home-icon/createnews-icon.png">
+                        <br>
+                        <span class="normaltxtgrey">Manage News</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="image" title="Manage Media Contents" onclick="HomeRedirect('Media')" src="content/images/home-icon/gallery-icon.png">
+                        <br>
+                        <span class="normaltxtgrey">Media Manager</span>
+                    </td>
+                    <td align="center">
+                        <input type="image" title="Manage Menu Items" onclick="HomeRedirect('Menu')" src="content/images/home-icon/menu-icon.png">
+                        <br>
+                        <span class="normaltxtgrey">Menu Manager</span>
+                    </td>
+                    <td align="center">
+                        <input type="image" title="Manage Publishing" src="content/images/home-icon/publish-icon.png">
+                        <br>
+                        <span class="normaltxtgrey">Manage Publishing</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @*|---------------------------|
+          |        JOJY ALEX          |
+          |   Andryan IT Solutions    |
+          |---------------------------|  *@
+        <div class="clr"></div>
+    </div>
+</div>
+

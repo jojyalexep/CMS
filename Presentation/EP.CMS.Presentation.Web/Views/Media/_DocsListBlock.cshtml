@@ -1,0 +1,14 @@
+﻿@model EP.CMS.Domain.ContentModule.Entities.Document
+<li class="data-row">
+    <div class="div-image">
+        <a class="modal" target="_blank" href="@Url.Content("~/" + Model.Url)">
+            <img src="@Url.Content("~/Content/images/documents-icon.png")" alt="@Model.DisplayName" class="imgclass" height="77" width="130" />
+        </a>
+    </div>
+    <div class="div-action">
+        <input type="checkbox" class="cbox-form" value="@Model.Id" title="Checkbox for image">
+    </div>
+    <div class="div-title">
+        <b class="img-name">@Model.DisplayName</b>
+    </div>
+</li>
